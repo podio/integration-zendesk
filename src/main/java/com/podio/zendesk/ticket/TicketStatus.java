@@ -23,9 +23,10 @@ public enum TicketStatus {
 	}
 
 	@JsonCreator
-	public static TicketStatus getById(int id) {
+	public static TicketStatus getById(String id) {
+		int intId = Integer.parseInt(id);
 		for (TicketStatus status : values()) {
-			if (status.getId() == id) {
+			if (status.getId() == intId) {
 				return status;
 			}
 		}

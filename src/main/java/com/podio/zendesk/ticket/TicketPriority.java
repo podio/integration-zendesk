@@ -23,9 +23,11 @@ public enum TicketPriority {
 	}
 
 	@JsonCreator
-	public static TicketPriority getById(int id) {
+	public static TicketPriority getById(String id) {
+		System.out.println(id);
+		int intId = Integer.parseInt(id);
 		for (TicketPriority priority : values()) {
-			if (priority.getId() == id) {
+			if (priority.getId() == intId) {
 				return priority;
 			}
 		}

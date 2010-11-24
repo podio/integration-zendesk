@@ -10,7 +10,10 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.deser.CustomDeserializerFactory;
 import org.codehaus.jackson.map.deser.StdDeserializerProvider;
 import org.codehaus.jackson.map.ser.CustomSerializerFactory;
+import org.joda.time.DateTime;
 
+import com.podio.zendesk.serialize.DateTimeDeserializer;
+import com.podio.zendesk.serialize.DateTimeSerializer;
 import com.podio.zendesk.ticket.TicketAPI;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -48,9 +51,13 @@ public class APIFactory {
 		mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
 
 		CustomSerializerFactory serializerFactory = new CustomSerializerFactory();
+		serializerFactory.addSpecificMapping(DateTime.class,
+				new DateTimeSerializer());
 		mapper.setSerializerFactory(serializerFactory);
 
 		CustomDeserializerFactory deserializerFactory = new CustomDeserializerFactory();
+		deserializerFactory.addSpecificMapping(DateTime.class,
+				new DateTimeDeserializer());
 		mapper.setDeserializerProvider(new StdDeserializerProvider(
 				deserializerFactory));
 

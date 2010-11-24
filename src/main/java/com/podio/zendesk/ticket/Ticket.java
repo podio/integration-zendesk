@@ -57,7 +57,7 @@ public class Ticket {
 		return assignedAt;
 	}
 
-	@JsonProperty("assigned-at")
+	@JsonProperty("assigned_at")
 	public void setAssignedAt(DateTime assignedAt) {
 		this.assignedAt = assignedAt;
 	}
@@ -66,7 +66,7 @@ public class Ticket {
 		return assigneeId;
 	}
 
-	@JsonProperty("assignee-id")
+	@JsonProperty("assignee_id")
 	public void setAssigneeId(int assigneeId) {
 		this.assigneeId = assigneeId;
 	}
@@ -75,7 +75,7 @@ public class Ticket {
 		return assigneeUpdatedAt;
 	}
 
-	@JsonProperty("assignee-updated-at")
+	@JsonProperty("assignee_updated_at")
 	public void setAssigneeUpdatedAt(DateTime assigneeUpdatedAt) {
 		this.assigneeUpdatedAt = assigneeUpdatedAt;
 	}
@@ -84,7 +84,7 @@ public class Ticket {
 		return createdAt;
 	}
 
-	@JsonProperty("created-at")
+	@JsonProperty("created_at")
 	public void setCreatedAt(DateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -109,7 +109,7 @@ public class Ticket {
 		return externalId;
 	}
 
-	@JsonProperty("external-id")
+	@JsonProperty("external_id")
 	public void setExternalId(String externalId) {
 		this.externalId = externalId;
 	}
@@ -118,7 +118,7 @@ public class Ticket {
 		return groupId;
 	}
 
-	@JsonProperty("group-id")
+	@JsonProperty("group_id")
 	public void setGroupId(int groupId) {
 		this.groupId = groupId;
 	}
@@ -135,7 +135,7 @@ public class Ticket {
 		return linkedId;
 	}
 
-	@JsonProperty("linked-id")
+	@JsonProperty("linked_id")
 	public void setLinkedId(Integer linkedId) {
 		this.linkedId = linkedId;
 	}
@@ -144,7 +144,7 @@ public class Ticket {
 		return priority;
 	}
 
-	@JsonProperty("priority-id")
+	@JsonProperty("priority_id")
 	public void setPriority(TicketPriority priority) {
 		this.priority = priority;
 	}
@@ -153,7 +153,7 @@ public class Ticket {
 		return submitterId;
 	}
 
-	@JsonProperty("submitter-id")
+	@JsonProperty("submitter_id")
 	public void setSubmitterId(int submitterId) {
 		this.submitterId = submitterId;
 	}
@@ -162,7 +162,7 @@ public class Ticket {
 		return status;
 	}
 
-	@JsonProperty("status-id")
+	@JsonProperty("status_id")
 	public void setStatus(TicketStatus status) {
 		this.status = status;
 	}
@@ -171,7 +171,7 @@ public class Ticket {
 		return statusUpdatedAt;
 	}
 
-	@JsonProperty("status-updated-at")
+	@JsonProperty("status_updated_at")
 	public void setStatusUpdatedAt(DateTime statusUpdatedAt) {
 		this.statusUpdatedAt = statusUpdatedAt;
 	}
@@ -180,7 +180,7 @@ public class Ticket {
 		return requesterId;
 	}
 
-	@JsonProperty("requester-id")
+	@JsonProperty("requester_id")
 	public void setRequesterId(int requesterId) {
 		this.requesterId = requesterId;
 	}
@@ -189,7 +189,7 @@ public class Ticket {
 		return requesterUpdatedAt;
 	}
 
-	@JsonProperty("requester-updated-at")
+	@JsonProperty("requester_updated_at")
 	public void setRequesterUpdatedAt(DateTime requesterUpdatedAt) {
 		this.requesterUpdatedAt = requesterUpdatedAt;
 	}
@@ -198,7 +198,7 @@ public class Ticket {
 		return type;
 	}
 
-	@JsonProperty("ticket-type-id")
+	@JsonProperty("ticket_type_id")
 	public void setType(TicketType type) {
 		this.type = type;
 	}
@@ -207,7 +207,7 @@ public class Ticket {
 		return updatedAt;
 	}
 
-	@JsonProperty("updated-at")
+	@JsonProperty("updated_at")
 	public void setUpdatedAt(DateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
@@ -216,7 +216,7 @@ public class Ticket {
 		return via;
 	}
 
-	@JsonProperty("via-id")
+	@JsonProperty("via_id")
 	public void setVia(TicketViaType via) {
 		this.via = via;
 	}
@@ -225,7 +225,7 @@ public class Ticket {
 		return currentTags;
 	}
 
-	@JsonProperty("current-tags")
+	@JsonProperty("current_tags")
 	public void setCurrentTags(List<String> currentTags) {
 		this.currentTags = currentTags;
 	}
@@ -250,7 +250,7 @@ public class Ticket {
 		return entries;
 	}
 
-	@JsonProperty("ticket-field-entries")
+	@JsonProperty("ticket_field_entries")
 	public void setEntries(List<TicketFieldEntry> entries) {
 		this.entries = entries;
 	}
