@@ -3,15 +3,25 @@ package com.podio.zendesk.ticket;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
 
+import com.podio.zendesk.serialize.TagListDeserializer;
+
 public class Ticket {
+
+	/**
+	 * "original_recipient_address":null, "channel":null, "recipient":null,
+	 * "latest_recipients":null, "current_collaborators":null,
+	 */
+
+	private DateTime initiallyAssignedAt;
 
 	private DateTime assignedAt;
 
 	private int assigneeId;
 
-	private DateTime assigneeUpdatedAt;
+	private Integer entryId;
 
 	private DateTime createdAt;
 
@@ -23,9 +33,11 @@ public class Ticket {
 
 	private int groupId;
 
+	private Integer organizationId;
+
 	private int id;
 
-	private Integer linkedId;
+	private List<Integer> linkings;
 
 	private TicketPriority priority;
 
@@ -37,21 +49,103 @@ public class Ticket {
 
 	private int requesterId;
 
-	private DateTime requesterUpdatedAt;
-
 	private TicketType type;
 
 	private DateTime updatedAt;
 
-	private TicketViaType via;
+	private TicketVia updatedViaType;
+
+	private TicketVia via;
+
+	private DateTime dueDate;
+
+	private DateTime resolutionTime;
+
+	private DateTime solvedAt;
 
 	private List<String> currentTags;
 
 	private int score;
 
+	private int baseScore;
+
+	private Integer problemId;
+
 	private List<TicketComment> comments;
 
 	private List<TicketFieldEntry> entries;
+
+	public DateTime getInitiallyAssignedAt() {
+		return initiallyAssignedAt;
+	}
+
+	@JsonProperty("initially_assigned_at")
+	public void setInitiallyAssignedAt(DateTime initiallyAssignedAt) {
+		this.initiallyAssignedAt = initiallyAssignedAt;
+	}
+
+	public Integer getEntryId() {
+		return entryId;
+	}
+
+	@JsonProperty("entry_id")
+	public void setEntryId(Integer entryId) {
+		this.entryId = entryId;
+	}
+
+	public Integer getOrganizationId() {
+		return organizationId;
+	}
+
+	@JsonProperty("organization_id")
+	public void setOrganizationId(Integer organizationId) {
+		this.organizationId = organizationId;
+	}
+
+	public TicketVia getUpdatedViaType() {
+		return updatedViaType;
+	}
+
+	@JsonProperty("updated_by_type_id")
+	public void setUpdatedViaType(TicketVia updatedViaType) {
+		this.updatedViaType = updatedViaType;
+	}
+
+	public DateTime getDueDate() {
+		return dueDate;
+	}
+
+	@JsonProperty("due_date")
+	public void setDueDate(DateTime dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public DateTime getResolutionTime() {
+		return resolutionTime;
+	}
+
+	@JsonProperty("resolution_time")
+	public void setResolutionTime(DateTime resolutionTime) {
+		this.resolutionTime = resolutionTime;
+	}
+
+	public DateTime getSolvedAt() {
+		return solvedAt;
+	}
+
+	@JsonProperty("solved_at")
+	public void setSolvedAt(DateTime solvedAt) {
+		this.solvedAt = solvedAt;
+	}
+
+	public Integer getProblemId() {
+		return problemId;
+	}
+
+	@JsonProperty("problem_id")
+	public void setProblemId(Integer problemId) {
+		this.problemId = problemId;
+	}
 
 	public DateTime getAssignedAt() {
 		return assignedAt;
@@ -69,15 +163,6 @@ public class Ticket {
 	@JsonProperty("assignee_id")
 	public void setAssigneeId(int assigneeId) {
 		this.assigneeId = assigneeId;
-	}
-
-	public DateTime getAssigneeUpdatedAt() {
-		return assigneeUpdatedAt;
-	}
-
-	@JsonProperty("assignee_updated_at")
-	public void setAssigneeUpdatedAt(DateTime assigneeUpdatedAt) {
-		this.assigneeUpdatedAt = assigneeUpdatedAt;
 	}
 
 	public DateTime getCreatedAt() {
@@ -127,17 +212,18 @@ public class Ticket {
 		return id;
 	}
 
+	@JsonProperty("nice_id")
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getLinkedId() {
-		return linkedId;
+	public List<Integer> getLinkings() {
+		return linkings;
 	}
 
-	@JsonProperty("linked_id")
-	public void setLinkedId(Integer linkedId) {
-		this.linkedId = linkedId;
+	@JsonProperty("linkings")
+	public void setLinkings(List<Integer> linkings) {
+		this.linkings = linkings;
 	}
 
 	public TicketPriority getPriority() {
@@ -145,6 +231,7 @@ public class Ticket {
 	}
 
 	@JsonProperty("priority_id")
+	@JsonDeserialize(using = TicketPriority.Deserializer.class)
 	public void setPriority(TicketPriority priority) {
 		this.priority = priority;
 	}
@@ -185,20 +272,12 @@ public class Ticket {
 		this.requesterId = requesterId;
 	}
 
-	public DateTime getRequesterUpdatedAt() {
-		return requesterUpdatedAt;
-	}
-
-	@JsonProperty("requester_updated_at")
-	public void setRequesterUpdatedAt(DateTime requesterUpdatedAt) {
-		this.requesterUpdatedAt = requesterUpdatedAt;
-	}
-
 	public TicketType getType() {
 		return type;
 	}
 
 	@JsonProperty("ticket_type_id")
+	@JsonDeserialize(using = TicketType.Deserializer.class)
 	public void setType(TicketType type) {
 		this.type = type;
 	}
@@ -212,12 +291,13 @@ public class Ticket {
 		this.updatedAt = updatedAt;
 	}
 
-	public TicketViaType getVia() {
+	public TicketVia getVia() {
 		return via;
 	}
 
 	@JsonProperty("via_id")
-	public void setVia(TicketViaType via) {
+	@JsonDeserialize(using = TicketVia.Deserializer.class)
+	public void setVia(TicketVia via) {
 		this.via = via;
 	}
 
@@ -226,6 +306,7 @@ public class Ticket {
 	}
 
 	@JsonProperty("current_tags")
+	@JsonDeserialize(using = TagListDeserializer.class)
 	public void setCurrentTags(List<String> currentTags) {
 		this.currentTags = currentTags;
 	}
@@ -236,6 +317,15 @@ public class Ticket {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public int getBaseScore() {
+		return baseScore;
+	}
+
+	@JsonProperty("base_score")
+	public void setBaseScore(int baseScore) {
+		this.baseScore = baseScore;
 	}
 
 	public List<TicketComment> getComments() {

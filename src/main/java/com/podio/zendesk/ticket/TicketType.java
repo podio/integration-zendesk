@@ -1,7 +1,12 @@
 package com.podio.zendesk.ticket;
 
-import org.codehaus.jackson.annotate.JsonCreator;
+import java.io.IOException;
+
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.annotate.JsonValue;
+import org.codehaus.jackson.map.DeserializationContext;
+import org.codehaus.jackson.map.JsonDeserializer;
 
 public enum TicketType {
 
@@ -22,15 +27,22 @@ public enum TicketType {
 		return id;
 	}
 
-	@JsonCreator
-	public static TicketType getById(String id) {
-		int intId = Integer.parseInt(id);
+	public static TicketType getById(int id) {
 		for (TicketType status : values()) {
-			if (status.getId() == intId) {
+			if (status.getId() == id) {
 				return status;
 			}
 		}
 
 		return null;
+	}
+
+	public static class Deserializer extends JsonDeserializer<TicketType> {
+
+		@Override
+		public TicketType deserialize(JsonParser jp, DeserializationContext ctxt)
+				throws IOException, JsonProcessingException {
+			return getById(jp.getIntValue());
+		}
 	}
 }

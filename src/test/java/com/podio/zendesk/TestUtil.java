@@ -6,6 +6,9 @@ import java.util.Properties;
 
 public class TestUtil {
 
+	private TestUtil() {
+	}
+
 	public static APIFactory getAPIFactory() throws IOException {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("config.properties"));

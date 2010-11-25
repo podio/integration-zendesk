@@ -1,7 +1,13 @@
 package com.podio.zendesk.ticket;
 
+import java.io.IOException;
+
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
+import org.codehaus.jackson.map.DeserializationContext;
+import org.codehaus.jackson.map.JsonDeserializer;
 
 public enum TicketPriority {
 
@@ -23,15 +29,23 @@ public enum TicketPriority {
 	}
 
 	@JsonCreator
-	public static TicketPriority getById(String id) {
-		System.out.println(id);
-		int intId = Integer.parseInt(id);
+	public static TicketPriority getById(int id) {
 		for (TicketPriority priority : values()) {
-			if (priority.getId() == intId) {
+			if (priority.getId() == id) {
 				return priority;
 			}
 		}
 
 		return null;
+	}
+
+	public static class Deserializer extends JsonDeserializer<TicketPriority> {
+
+		@Override
+		public TicketPriority deserialize(JsonParser jp,
+				DeserializationContext ctxt) throws IOException,
+				JsonProcessingException {
+			return getById(jp.getIntValue());
+		}
 	}
 }

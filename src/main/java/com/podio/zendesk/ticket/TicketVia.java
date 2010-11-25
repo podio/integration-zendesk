@@ -8,17 +8,19 @@ import org.codehaus.jackson.annotate.JsonValue;
 import org.codehaus.jackson.map.DeserializationContext;
 import org.codehaus.jackson.map.JsonDeserializer;
 
-public enum TicketStatus {
+public enum TicketVia {
 
-	NEW(0),
-	OPEN(1),
-	PENDING(2),
-	SOLVED(3),
-	CLOSED(4);
+	WEB_FORM(0),
+	MAIL(4),
+	WEB_SERVICE(5),
+	GET_SATISFACTION(16),
+	DROPBOX(17),
+	RECOVERED(21),
+	FORUM(24);
 
 	private final int id;
 
-	private TicketStatus(int id) {
+	private TicketVia(int id) {
 		this.id = id;
 	}
 
@@ -27,20 +29,20 @@ public enum TicketStatus {
 		return id;
 	}
 
-	public static TicketStatus getById(int id) {
-		for (TicketStatus status : values()) {
-			if (status.getId() == id) {
-				return status;
+	public static TicketVia getById(int id) {
+		for (TicketVia viaType : values()) {
+			if (viaType.getId() == id) {
+				return viaType;
 			}
 		}
 
 		return null;
 	}
 
-	public static class Deserializer extends JsonDeserializer<TicketStatus> {
+	public static class Deserializer extends JsonDeserializer<TicketVia> {
 
 		@Override
-		public TicketStatus deserialize(JsonParser jp,
+		public TicketVia deserialize(JsonParser jp,
 				DeserializationContext ctxt) throws IOException,
 				JsonProcessingException {
 			return getById(jp.getIntValue());

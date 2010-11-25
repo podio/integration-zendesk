@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
+import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.deser.CustomDeserializerFactory;
@@ -47,7 +47,10 @@ public class APIFactory {
 
 	private JacksonJsonProvider getJsonProvider() {
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		mapper.configure(
+				DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		mapper.configure(
+				DeserializationConfig.Feature.READ_ENUMS_USING_TO_STRING, true);
 		mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
 
 		CustomSerializerFactory serializerFactory = new CustomSerializerFactory();

@@ -13,7 +13,7 @@ public class TicketComment {
 
 	private String value;
 
-	private TicketViaType via;
+	private TicketVia via;
 
 	private Integer viaReference;
 
@@ -52,12 +52,12 @@ public class TicketComment {
 		this.value = value;
 	}
 
-	public TicketViaType getVia() {
+	public TicketVia getVia() {
 		return via;
 	}
 
 	@JsonProperty("via-id")
-	public void setVia(TicketViaType via) {
+	public void setVia(TicketVia via) {
 		this.via = via;
 	}
 
