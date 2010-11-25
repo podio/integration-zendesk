@@ -1,27 +1,32 @@
 package com.podio.zendesk.ticket;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
+
+import com.podio.zendesk.attachment.Attachment;
 
 public class TicketComment {
 
 	private int authorId;
 
-	private DateTime createdAt;
-
-	private boolean isPublic;
-
 	private String value;
 
 	private TicketVia via;
 
-	private Integer viaReference;
+	private boolean isPublic;
+
+	private DateTime createdAt;
+
+	private List<Attachment> attachments;
 
 	public int getAuthorId() {
 		return authorId;
 	}
 
-	@JsonProperty("author-id")
+	@JsonProperty("author_id")
 	public void setAuthorId(int authorId) {
 		this.authorId = authorId;
 	}
@@ -30,7 +35,7 @@ public class TicketComment {
 		return createdAt;
 	}
 
-	@JsonProperty("created-at")
+	@JsonProperty("created_at")
 	public void setCreatedAt(DateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -39,7 +44,7 @@ public class TicketComment {
 		return isPublic;
 	}
 
-	@JsonProperty("is-public")
+	@JsonProperty("is_public")
 	public void setPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
@@ -56,17 +61,18 @@ public class TicketComment {
 		return via;
 	}
 
-	@JsonProperty("via-id")
+	@JsonProperty("via_id")
+	@JsonDeserialize(using = TicketVia.Deserializer.class)
 	public void setVia(TicketVia via) {
 		this.via = via;
 	}
 
-	public Integer getViaReference() {
-		return viaReference;
+	public List<Attachment> getAttachments() {
+		return attachments;
 	}
 
-	@JsonProperty("via-reference")
-	public void setViaReference(Integer viaReference) {
-		this.viaReference = viaReference;
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
 	}
+
 }

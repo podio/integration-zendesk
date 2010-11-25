@@ -44,6 +44,32 @@ public class TicketAPITest {
 		Assert.assertEquals(ticket.getCurrentTags().get(1), "question");
 		Assert.assertEquals(ticket.getScore(), 32);
 		Assert.assertEquals(ticket.getComments().size(), 3);
+		Assert.assertTrue(ticket.getComments().get(0).getValue()
+				.contains("Popup:"));
+		Assert.assertEquals(
+				ticket.getComments().get(0).getAttachments().size(), 0);
+		Assert.assertEquals(ticket.getComments().get(0).getAuthorId(), 21480147);
+		Assert.assertEquals(ticket.getComments().get(0).getCreatedAt(),
+				new DateTime(2010, 11, 24, 21, 01, 34, 0));
+		Assert.assertEquals(ticket.getComments().get(0).getVia(),
+				TicketVia.DROPBOX);
+		Assert.assertEquals(
+				ticket.getComments().get(1).getAttachments().size(), 1);
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getContentType(), "image/png");
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getFilename(), "image001.png");
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getToken(), "yxzdd3cdcehv6zs");
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getCreatedAt(), new DateTime(2010, 11, 24, 21, 14, 30, 0));
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getId(), 12628519);
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getSize(), 36057);
+		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
+				.getUrl().toString(),
+				"http://hoist.zendesk.com/attachments/token/yxzdd3cdcehv6zs/?name=image001.png");
 		Assert.assertEquals(ticket.getEntries().size(), 1);
 		Assert.assertEquals(ticket.getEntries().get(0).getFieldId(), 87154);
 		Assert.assertEquals(ticket.getEntries().get(0).getValue(), "question");
