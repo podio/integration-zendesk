@@ -6,12 +6,12 @@ import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.podio.zendesk.TestUtil;
+import com.podio.zendesk.APIFactory;
 
 public class TicketAPITest {
 
 	private static TicketAPI getAPI() throws IOException {
-		return TestUtil.getAPIFactory().getTicketAPI();
+		return APIFactory.getFromConfig().getTicketAPI();
 	}
 
 	@Test

@@ -1,7 +1,10 @@
 package com.podio.zendesk;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Properties;
 
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.codehaus.jackson.map.DeserializationConfig;
@@ -25,21 +28,21 @@ public class APIFactory {
 
 	private final WebResource rootResource;
 
-	public APIFactory(String hostname, int port, boolean ssl, String username,
+	public APIFactory(String domain, boolean ssl, String username,
 			String password) {
 		ClientConfig config = new DefaultClientConfig();
 		config.getSingletons().add(getJsonProvider());
 		Client client = Client.create(config);
 
-		this.rootResource = client.resource(getURI(hostname, port, ssl));
+		this.rootResource = client.resource(getURI(domain, ssl));
 		this.rootResource
 				.addFilter(new HTTPBasicAuthFilter(username, password));
 	}
 
-	private URI getURI(String hostname, int port, boolean ssl) {
+	private URI getURI(String domain, boolean ssl) {
 		try {
-			return new URI(ssl ? "https" : "http", null, hostname, port, null,
-					null, null);
+			return new URI(ssl ? "https" : "http", null, domain
+					+ ".zendesk.com", ssl ? 443 : 80, null, null, null);
 		} catch (URISyntaxException e) {
 			throw new RuntimeException(e);
 		}
@@ -69,5 +72,15 @@ public class APIFactory {
 
 	public TicketAPI getTicketAPI() {
 		return new TicketAPI(rootResource);
+	}
+
+	public static APIFactory getFromConfig() throws IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("config.properties"));
+
+		return new APIFactory(properties.getProperty("domain"),
+				Boolean.parseBoolean(properties.getProperty("ssl")),
+				properties.getProperty("username"),
+				properties.getProperty("password"));
 	}
 }
