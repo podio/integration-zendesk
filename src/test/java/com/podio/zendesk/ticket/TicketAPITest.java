@@ -20,7 +20,7 @@ public class TicketAPITest {
 
 		Assert.assertEquals(ticket.getAssignedAt(), new DateTime(2010, 11, 24,
 				21, 42, 51, 0));
-		Assert.assertEquals(ticket.getAssigneeId(), 16080839);
+		Assert.assertEquals(ticket.getAssigneeId().intValue(), 16080839);
 		Assert.assertEquals(ticket.getCreatedAt(), new DateTime(2010, 11, 24,
 				21, 1, 34, 0));
 		Assert.assertEquals(ticket.getSubject(), "");

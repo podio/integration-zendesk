@@ -19,7 +19,7 @@ public class Ticket {
 
 	private DateTime assignedAt;
 
-	private int assigneeId;
+	private Integer assigneeId;
 
 	private Integer entryId;
 
@@ -156,12 +156,12 @@ public class Ticket {
 		this.assignedAt = assignedAt;
 	}
 
-	public int getAssigneeId() {
+	public Integer getAssigneeId() {
 		return assigneeId;
 	}
 
 	@JsonProperty("assignee_id")
-	public void setAssigneeId(int assigneeId) {
+	public void setAssigneeId(Integer assigneeId) {
 		this.assigneeId = assigneeId;
 	}
 

@@ -18,6 +18,7 @@ import org.joda.time.DateTime;
 import com.podio.zendesk.serialize.DateTimeDeserializer;
 import com.podio.zendesk.serialize.DateTimeSerializer;
 import com.podio.zendesk.ticket.TicketAPI;
+import com.podio.zendesk.user.UserAPI;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
@@ -72,6 +73,10 @@ public class APIFactory {
 
 	public TicketAPI getTicketAPI() {
 		return new TicketAPI(rootResource);
+	}
+
+	public UserAPI getUserAPI() {
+		return new UserAPI(rootResource);
 	}
 
 	public static APIFactory getFromConfig() throws IOException {
