@@ -1,6 +1,7 @@
 package com.podio.zendesk.ticket;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.joda.time.DateTime;
 import org.junit.Assert;
@@ -31,19 +32,19 @@ public class TicketAPITest {
 		Assert.assertEquals(ticket.getLinkings().size(), 0);
 		Assert.assertEquals(ticket.getPriority(), TicketPriority.NONE);
 		Assert.assertEquals(ticket.getSubmitterId(), 21480147);
-		Assert.assertEquals(ticket.getStatus(), TicketStatus.PENDING);
+		Assert.assertEquals(ticket.getStatus(), TicketStatus.OPEN);
 		Assert.assertEquals(ticket.getStatusUpdatedAt(), new DateTime(2010, 11,
-				24, 21, 42, 51, 0));
+				25, 20, 7, 24, 0));
 		Assert.assertEquals(ticket.getRequesterId(), 21480147);
 		Assert.assertEquals(ticket.getType(), TicketType.INCIDENT);
-		Assert.assertEquals(ticket.getUpdatedAt(), new DateTime(2010, 11, 24,
-				21, 42, 51, 0));
+		Assert.assertEquals(ticket.getUpdatedAt(), new DateTime(2010, 11, 25,
+				20, 7, 24, 0));
 		Assert.assertEquals(ticket.getVia(), TicketVia.DROPBOX);
 		Assert.assertEquals(ticket.getCurrentTags().size(), 2);
 		Assert.assertEquals(ticket.getCurrentTags().get(0), "betafeedback");
 		Assert.assertEquals(ticket.getCurrentTags().get(1), "question");
-		Assert.assertEquals(ticket.getScore(), 32);
-		Assert.assertEquals(ticket.getComments().size(), 3);
+		Assert.assertEquals(ticket.getScore(), 48);
+		Assert.assertEquals(ticket.getComments().size(), 4);
 		Assert.assertTrue(ticket.getComments().get(0).getValue()
 				.contains("Popup:"));
 		Assert.assertEquals(
@@ -73,5 +74,12 @@ public class TicketAPITest {
 		Assert.assertEquals(ticket.getEntries().size(), 1);
 		Assert.assertEquals(ticket.getEntries().get(0).getFieldId(), 87154);
 		Assert.assertEquals(ticket.getEntries().get(0).getValue(), "question");
+	}
+
+	@Test
+	public void getTickets() throws IOException {
+		List<Ticket> tickets = getAPI().getTickets(47845, 1);
+
+		Assert.assertEquals(tickets.size(), 30);
 	}
 }

@@ -59,7 +59,7 @@ public class Ticket {
 
 	private DateTime dueDate;
 
-	private DateTime resolutionTime;
+	private Integer resolutionTime;
 
 	private DateTime solvedAt;
 
@@ -120,12 +120,12 @@ public class Ticket {
 		this.dueDate = dueDate;
 	}
 
-	public DateTime getResolutionTime() {
+	public Integer getResolutionTime() {
 		return resolutionTime;
 	}
 
 	@JsonProperty("resolution_time")
-	public void setResolutionTime(DateTime resolutionTime) {
+	public void setResolutionTime(Integer resolutionTime) {
 		this.resolutionTime = resolutionTime;
 	}
 
