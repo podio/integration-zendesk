@@ -1,4 +1,4 @@
-package com.podio.zendesk.serialize;
+package com.podio.integration.zendesk.serialize;
 
 import java.io.IOException;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.podio.zendesk;
+package com.podio.integration.zendesk;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,10 +15,10 @@ import org.codehaus.jackson.map.deser.StdDeserializerProvider;
 import org.codehaus.jackson.map.ser.CustomSerializerFactory;
 import org.joda.time.DateTime;
 
-import com.podio.zendesk.serialize.DateTimeDeserializer;
-import com.podio.zendesk.serialize.DateTimeSerializer;
-import com.podio.zendesk.ticket.TicketAPI;
-import com.podio.zendesk.user.UserAPI;
+import com.podio.integration.zendesk.serialize.DateTimeDeserializer;
+import com.podio.integration.zendesk.serialize.DateTimeSerializer;
+import com.podio.integration.zendesk.ticket.TicketAPI;
+import com.podio.integration.zendesk.user.UserAPI;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;

@@ -6,7 +6,10 @@ import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.podio.zendesk.APIFactory;
+import com.podio.integration.zendesk.APIFactory;
+import com.podio.integration.zendesk.user.User;
+import com.podio.integration.zendesk.user.UserAPI;
+import com.podio.integration.zendesk.user.UserRole;
 
 public class UserAPITest {
 

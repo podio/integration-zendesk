@@ -7,7 +7,13 @@ import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.podio.zendesk.APIFactory;
+import com.podio.integration.zendesk.APIFactory;
+import com.podio.integration.zendesk.ticket.Ticket;
+import com.podio.integration.zendesk.ticket.TicketAPI;
+import com.podio.integration.zendesk.ticket.TicketPriority;
+import com.podio.integration.zendesk.ticket.TicketStatus;
+import com.podio.integration.zendesk.ticket.TicketType;
+import com.podio.integration.zendesk.ticket.TicketVia;
 
 public class TicketAPITest {
 

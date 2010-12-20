@@ -1,4 +1,4 @@
-package com.podio.zendesk;
+package com.podio.integration.zendesk;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;

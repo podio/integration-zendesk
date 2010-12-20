@@ -1,4 +1,4 @@
-package com.podio.zendesk.user;
+package com.podio.integration.zendesk.user;
 
 import java.net.URL;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
 
-import com.podio.zendesk.group.Group;
+import com.podio.integration.zendesk.group.Group;
 
 public class User {
 

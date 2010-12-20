@@ -1,24 +1,25 @@
-package com.podio.zendesk.ticket;
+package com.podio.integration.zendesk.ticket;
 
 import java.io.IOException;
 
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 import org.codehaus.jackson.map.DeserializationContext;
 import org.codehaus.jackson.map.JsonDeserializer;
 
-public enum TicketStatus {
+public enum TicketPriority {
 
-	NEW(0),
-	OPEN(1),
-	PENDING(2),
-	SOLVED(3),
-	CLOSED(4);
+	NONE(0),
+	LOW(1),
+	NORMAL(2),
+	HIGH(3),
+	URGENT(4);
 
 	private final int id;
 
-	private TicketStatus(int id) {
+	private TicketPriority(int id) {
 		this.id = id;
 	}
 
@@ -27,20 +28,21 @@ public enum TicketStatus {
 		return id;
 	}
 
-	public static TicketStatus getById(int id) {
-		for (TicketStatus status : values()) {
-			if (status.getId() == id) {
-				return status;
+	@JsonCreator
+	public static TicketPriority getById(int id) {
+		for (TicketPriority priority : values()) {
+			if (priority.getId() == id) {
+				return priority;
 			}
 		}
 
 		return null;
 	}
 
-	public static class Deserializer extends JsonDeserializer<TicketStatus> {
+	public static class Deserializer extends JsonDeserializer<TicketPriority> {
 
 		@Override
-		public TicketStatus deserialize(JsonParser jp,
+		public TicketPriority deserialize(JsonParser jp,
 				DeserializationContext ctxt) throws IOException,
 				JsonProcessingException {
 			return getById(jp.getIntValue());

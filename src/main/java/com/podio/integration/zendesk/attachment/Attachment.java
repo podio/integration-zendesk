@@ -1,4 +1,4 @@
-package com.podio.zendesk.attachment;
+package com.podio.integration.zendesk.attachment;
 
 import java.net.URL;
 

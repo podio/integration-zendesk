@@ -1,4 +1,4 @@
-package com.podio.zendesk.serialize;
+package com.podio.integration.zendesk.serialize;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

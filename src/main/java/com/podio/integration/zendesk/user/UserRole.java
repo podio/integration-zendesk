@@ -1,4 +1,4 @@
-package com.podio.zendesk.user;
+package com.podio.integration.zendesk.user;
 
 import java.io.IOException;
 

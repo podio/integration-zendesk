@@ -1,4 +1,4 @@
-package com.podio.zendesk.ticket;
+package com.podio.integration.zendesk.ticket;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.joda.time.DateTime;
 
-import com.podio.zendesk.attachment.Attachment;
+import com.podio.integration.zendesk.attachment.Attachment;
 
 public class TicketComment {
 

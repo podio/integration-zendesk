@@ -1,4 +1,4 @@
-package com.podio.zendesk.ticket;
+package com.podio.integration.zendesk.ticket;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.podio.zendesk.ticket;
+package com.podio.integration.zendesk.ticket;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.DateTime;
