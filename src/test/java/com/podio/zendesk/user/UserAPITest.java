@@ -49,7 +49,7 @@ public class UserAPITest {
 		Assert.assertEquals(user.getOrganizationId(), null);
 		Assert.assertEquals(
 				user.getPhotoURL().toString(),
-				"http://hoist.zendesk.com/system/photos/0015/9483/picture-5343-1275426057_thumb.jpg");
+				"https://hoist.zendesk.com/system/photos/0015/9483/picture-5343-1275426057_thumb.jpg");
 		Assert.assertEquals(user.getRestrictionId().intValue(), 0);
 		Assert.assertEquals(user.getRole(), UserRole.ADMINISTRATOR);
 		Assert.assertEquals(user.getTimeZone(), "Copenhagen");

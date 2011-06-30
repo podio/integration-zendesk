@@ -74,9 +74,10 @@ public class TicketAPITest {
 				.getId(), 12628519);
 		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
 				.getSize(), 36057);
-		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
-				.getUrl().toString(),
-				"http://hoist.zendesk.com/attachments/token/yxzdd3cdcehv6zs/?name=image001.png");
+		Assert.assertEquals(
+				ticket.getComments().get(1).getAttachments().get(0).getUrl()
+						.toString(),
+				"https://hoist.zendesk.com/attachments/token/yxzdd3cdcehv6zs/?name=image001.png");
 		Assert.assertEquals(ticket.getEntries().size(), 1);
 		Assert.assertEquals(ticket.getEntries().get(0).getFieldId(), 87154);
 		Assert.assertEquals(ticket.getEntries().get(0).getValue(), "question");
