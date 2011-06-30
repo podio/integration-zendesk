@@ -28,11 +28,11 @@ public class UserAPITest {
 	public void getUser() throws IOException {
 		User user = getAPI().getUser(16080839);
 
-		Assert.assertEquals(user.getGroups().size(), 1);
-		Assert.assertEquals(user.getGroups().get(0).getName(), "Support");
-		Assert.assertEquals(user.getGroups().get(0).getCreatedAt(), null);
-		Assert.assertEquals(user.getGroups().get(0).getId(), 1807);
-		Assert.assertEquals(user.getGroups().get(0).getUpdatedAt(), null);
+		Assert.assertEquals(user.getGroups().size(), 2);
+		Assert.assertEquals(user.getGroups().get(1).getName(), "Support");
+		Assert.assertEquals(user.getGroups().get(1).getCreatedAt(), null);
+		Assert.assertEquals(user.getGroups().get(1).getId(), 1807);
+		Assert.assertEquals(user.getGroups().get(1).getUpdatedAt(), null);
 
 		Assert.assertEquals(user.getDetails(), "");
 		Assert.assertEquals(user.getEmail(), "holm@hoisthq.com");
