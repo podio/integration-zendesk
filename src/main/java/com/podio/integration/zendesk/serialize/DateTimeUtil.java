@@ -1,6 +1,7 @@
 package com.podio.integration.zendesk.serialize;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -13,7 +14,8 @@ public final class DateTimeUtil {
 	}
 
 	public static DateTime parseDateTime(String text) {
-		return DATE_TIME_FORMAT.parseDateTime(text);
+		return DATE_TIME_FORMAT.parseDateTime(text)
+				.toDateTime(DateTimeZone.UTC);
 	}
 
 	public static String formatDateTime(DateTime dateTime) {

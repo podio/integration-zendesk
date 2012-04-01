@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,11 +26,12 @@ public class TicketAPITest {
 	public void getTicket() throws IOException {
 		Ticket ticket = getAPI().getTicket(933);
 
+		System.out.println(ticket.getAssignedAt().getZone());
 		Assert.assertEquals(ticket.getAssignedAt(), new DateTime(2010, 11, 24,
-				21, 42, 51, 0));
+				20, 42, 51, 0, DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getAssigneeId().intValue(), 16080839);
 		Assert.assertEquals(ticket.getCreatedAt(), new DateTime(2010, 11, 24,
-				21, 1, 34, 0));
+				20, 1, 34, 0, DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getSubject(), "");
 		Assert.assertTrue(ticket.getDescription().contains("Popup:"));
 		Assert.assertEquals(ticket.getExternalId(), null);
@@ -40,11 +42,11 @@ public class TicketAPITest {
 		Assert.assertEquals(ticket.getSubmitterId(), 21480147);
 		Assert.assertEquals(ticket.getStatus(), TicketStatus.CLOSED);
 		Assert.assertEquals(ticket.getStatusUpdatedAt(), new DateTime(2010, 12,
-				1, 13, 0, 28, 0));
+				1, 12, 0, 28, 0, DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getRequesterId(), 21480147);
 		Assert.assertEquals(ticket.getType(), TicketType.INCIDENT);
 		Assert.assertEquals(ticket.getUpdatedAt(), new DateTime(2010, 12, 1,
-				13, 0, 29, 0));
+				12, 0, 29, 0, DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getVia(), TicketVia.DROPBOX);
 		Assert.assertEquals(ticket.getCurrentTags().size(), 2);
 		Assert.assertEquals(ticket.getCurrentTags().get(0), "betafeedback");
@@ -57,7 +59,7 @@ public class TicketAPITest {
 				ticket.getComments().get(0).getAttachments().size(), 0);
 		Assert.assertEquals(ticket.getComments().get(0).getAuthorId(), 21480147);
 		Assert.assertEquals(ticket.getComments().get(0).getCreatedAt(),
-				new DateTime(2010, 11, 24, 21, 01, 34, 0));
+				new DateTime(2010, 11, 24, 20, 01, 34, 0, DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getComments().get(0).getVia(),
 				TicketVia.DROPBOX);
 		Assert.assertEquals(
@@ -69,7 +71,8 @@ public class TicketAPITest {
 		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
 				.getToken(), "yxzdd3cdcehv6zs");
 		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
-				.getCreatedAt(), new DateTime(2010, 11, 24, 21, 14, 30, 0));
+				.getCreatedAt(), new DateTime(2010, 11, 24, 20, 14, 30, 0,
+				DateTimeZone.UTC));
 		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)
 				.getId(), 12628519);
 		Assert.assertEquals(ticket.getComments().get(1).getAttachments().get(0)

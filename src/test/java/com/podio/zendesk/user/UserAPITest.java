@@ -3,6 +3,7 @@ package com.podio.zendesk.user;
 import java.io.IOException;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -41,8 +42,8 @@ public class UserAPITest {
 		Assert.assertEquals(user.getNotes(), "");
 		Assert.assertEquals(user.getOpenIdURL(), null);
 		Assert.assertEquals(user.getPhone(), "");
-		Assert.assertEquals(user.getCreatedAt(), new DateTime(2010, 8, 26, 11,
-				50, 12, 0));
+		Assert.assertEquals(user.getCreatedAt(), new DateTime(2010, 8, 26, 9,
+				50, 12, 0, DateTimeZone.UTC));
 		Assert.assertEquals(user.getId(), 16080839);
 		Assert.assertNotNull(user.getLastLogin());
 		Assert.assertEquals(user.getLocaleId(), null);
