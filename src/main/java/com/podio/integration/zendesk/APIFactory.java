@@ -15,6 +15,7 @@ import org.codehaus.jackson.map.deser.StdDeserializerProvider;
 import org.codehaus.jackson.map.ser.CustomSerializerFactory;
 import org.joda.time.DateTime;
 
+import com.podio.integration.zendesk.search.SearchAPI;
 import com.podio.integration.zendesk.serialize.DateTimeDeserializer;
 import com.podio.integration.zendesk.serialize.DateTimeSerializer;
 import com.podio.integration.zendesk.ticket.TicketAPI;
@@ -73,6 +74,10 @@ public class APIFactory {
 
 	public TicketAPI getTicketAPI() {
 		return new TicketAPI(rootResource);
+	}
+
+	public SearchAPI getSearchAPI() {
+		return new SearchAPI(rootResource);
 	}
 
 	public UserAPI getUserAPI() {
